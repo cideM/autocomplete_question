@@ -1,24 +1,34 @@
 import * as React from "react";
+import { useState } from "react";
 import Autocomplete from "@mui/material/Autocomplete";
 import Container from "@mui/material/Container";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 
 export default function App() {
+  const [submitted, setSubmitted] = useState("");
+
   const handleOnChange = (event, value, reason) => {
-    console.log("handleOnChange", event?.type, value, reason)
-  }
+    setSubmitted(
+      `event.type: ${event?.type}, value: ${value}, reason: ${reason}`
+    );
+  };
 
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="md">
       <Box sx={{ my: 4 }}>
-        <Autocomplete
-          onChange={handleOnChange}
-          id="free-solo-demo"
-          freeSolo
-          options={top100Films.map((option) => option.title)}
-          renderInput={(params) => <TextField {...params} label="freeSolo" />}
-        />
+        <Stack spacing={4}>
+          <Typography>Submitted: {submitted}</Typography>
+          <Autocomplete
+            onChange={handleOnChange}
+            id="free-solo-demo"
+            freeSolo
+            options={top100Films.map((option) => option.title)}
+            renderInput={(params) => <TextField {...params} label="freeSolo" />}
+          />
+        </Stack>
       </Box>
     </Container>
   );
