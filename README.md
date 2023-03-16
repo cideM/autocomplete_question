@@ -1,6 +1,6 @@
 # Getting Started
 
-You need to have a somewhat recent NodeJS version installed.
+You need to have a somewhat recent NodeJS version installed, and Yarn.
 
 ```shell
 $ yarn install
